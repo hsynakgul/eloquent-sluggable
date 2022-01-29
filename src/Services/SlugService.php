@@ -104,6 +104,10 @@ class SlugService
     protected function needsSlugging(string $attribute, array $config): bool
     {
         $value = $this->model->getAttributeValue($attribute);
+        
+        if (!$this->model->isDirty($config['source'])) {
+            return false;
+        }
 
         if (
             $config['onUpdate'] === true ||
