@@ -105,7 +105,7 @@ class SlugService
     {
         $value = $this->model->getAttributeValue($attribute);
         
-        if (!$this->model->isDirty($config['source'])) {
+        if (!$this->model->isDirty($config['source']) && !$this->model->isDirty($attribute)) {
             return false;
         }
 
